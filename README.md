@@ -1,8 +1,20 @@
 # Capstone Project 1 - Level 2 task 13
-## Project to create a book store system using python and SQLLite3 DB.
-#### Table of Contents
-#### 1. Installation.
-#### 1. System Usage.
-#### 1. Link to Hpyerion site.
+### Project to create a book store system using python and SQLite3 DB.
+##### Table of Contents:
+##### 1. Installation.
+##### 2. System Usage.
+##### 3. Link to Hyperion site.
 
-## 1. Installation
+## 1. Installation.
+* Python:
+  * Ensure that you have Python installed on the system where you will be running the program.
+  * Pull in the program and the data folder containing the bookstore database file.
+* Run the Python program, preferably from an IDE.
+
+## 2. System Usage.
+Run the python program called BookStore.py.
+The system provides a menu that allows a book clerk to add books, remove books, find books, change book details, or print a report on books in the system.
+
+## 3. Useful link...
+This site provides details for doing bootcamps in python and other fun coding.
+https://hyperiondev.com

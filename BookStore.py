@@ -4,6 +4,7 @@
 # manage the books in the book store.
 # Source - thanks to stackoverflow.com for some answers and inspiration.
 # Remarks: Issue1 - 20230402: Remove obsolete remarks and spaces.
+# Remarks: Issue2 - 20230402: Change variable names to be more decscriptive.
 
 # Import Libraries.
 import sqlite3
@@ -48,21 +49,21 @@ def search_book(title):
 
 #Process multiple books with same title.
 def multiple_books(books_found):
-    num = 0
-    n = 0
+    counter = 0
+    index = 0
     id_no = 0
     tot_qty = books_found[0]
     books = books_found[1]
     #Print out the list of books and their details.
     print(f"\nThe Book has been found, the number of books with this title is: {tot_qty}\n")
             
-    for n in range(0,tot_qty):
-        num += 1
-        ID = books[n][0]
-        name = books[n][1]
-        author = books[n][2]
-        quantity = books[n][3]
-        print(f"Book number: {num}")
+    for index in range(0,tot_qty):
+        counter += 1
+        ID = books[index][0]
+        name = books[index][1]
+        author = books[index][2]
+        quantity = books[index][3]
+        print(f"Book number: {counter}")
         print(f"ID = {ID}" )
         print(f"Title = {name}")
         print(f"Author = {author}")
@@ -80,17 +81,17 @@ def multiple_books(books_found):
 
 # Print function.
 def print_books(tot_qty,books):
-    num = 0
-    n = 0
+    counter = 0
+    index = 0
         
     #Print out the list of books and their details.            
-    for n in range(0,tot_qty):
-        num += 1
-        ID = books[n][0]
-        name = books[n][1]
-        author = books[n][2]
-        quantity = books[n][3]
-        print(f"Book number: {num}")
+    for index in range(0,tot_qty):
+        counter += 1
+        ID = books[index][0]
+        name = books[index][1]
+        author = books[index][2]
+        quantity = books[index][3]
+        print(f"Book number: {counter}")
         print(f"ID = {ID}" )
         print(f"Title = {name}")
         print(f"Author = {author}")
@@ -105,9 +106,9 @@ book_list = [(3001,"A Tale of Two Cities","Charles Dickens", 30),(3002,"Harry Po
              (3005,"Alice in Wonderland","Lewis Carroll",12)]
 
 # Insert book record if it doesn't exist.
-n = 0
-while n < 5:
-    id = book_list[n][0]
+counter = 0
+while counter < 5:
+    id = book_list[counter][0]
     id = int(id)
     #Check if record id already exists.
     cursor.execute('''SELECT * from book_store WHERE id = ?''',(id,))
@@ -115,8 +116,8 @@ while n < 5:
     #Insert records.
     if len(db_result) == 0:
         cursor.execute('''INSERT INTO book_store(id, Title, Author, Qty)
-                  VALUES(?,?,?,?)''', (book_list[n]))
-    n += 1
+                  VALUES(?,?,?,?)''', (book_list[counter]))
+    counter += 1
 # Database updated.    
 db.commit()
 

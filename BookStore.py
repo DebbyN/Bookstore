@@ -3,6 +3,7 @@
 # Compulsory Task - Create a Book Store program using both Python and SQL to
 # manage the books in the book store.
 # Source - thanks to stackoverflow.com for some answers and inspiration.
+# Remarks: Issue1 - 20230402: Remove obsolete remarks and spaces.
 
 # Import Libraries.
 import sqlite3
@@ -17,11 +18,9 @@ try:
     # Check whether table exists before creating it.
     cursor.execute('''CREATE TABLE IF NOT EXISTS
         book_store(id INTEGER PRIMARY KEY, Title TEXT, Author TEXT, Qty INTEGER)''')
-
-    #Commit change to database.
+    
     db.commit()
 except Exception as e:
-        #Roll back any changes.
         db.rollback
         raise e
 finally:
@@ -30,7 +29,6 @@ finally:
 
 #Open the data base connection again to run the book store system.
 db = sqlite3.connect('data/books_db')
-# Get a cursor object.
 cursor = db.cursor()
     
 # ** Function Section **
@@ -270,7 +268,6 @@ while end:
                 
             #Change quantity.
             elif choice == '3':
-                
                 try:
                     new_quantity = int(input(f"Current Quantity is {quantity}, please enter the new quantity: \n"))
                     cursor.execute('''UPDATE book_store SET Qty = ?
@@ -293,7 +290,6 @@ while end:
                 print(f"Invalid choice: {choice}, please try again.\n")
                 change = False
                 pass
-       
         pass
 
     ### Option 3 - Delete a book.
@@ -302,8 +298,7 @@ while end:
         cont_del = "N"
         tot_qty = 0
         title = input("Please enter the title of the book to be deleted: \n")
-        
-        #Check if for no title entered.
+        #Check if no title entered.
         if len(title) == 0:
             pass
         #Use search function to check whether the book is in the database.
@@ -320,13 +315,9 @@ while end:
                 pass
             else:
                 cont_del = "Y"
-            
-        #One book found with the title.
         elif tot_qty == 1:
             id_no = books[0][0]
             cont_del = "Y"
-            
-        #No books found with the title.
         else:
             print(f"Book with the title {title} or blank, not found, please try again.\n")
             pass
@@ -340,7 +331,6 @@ while end:
             author = db_result[2]
             print(f"Book {title}, by author {author}, will now be deleted.\n")
             confirm = input("Please confirm Y or N : ")
-
             #Complete the deletion or exit the option.
             if confirm.upper() == "Y":
                 cursor.execute('''DELETE FROM book_store WHERE id = ?''',(id_no,))
@@ -348,19 +338,16 @@ while end:
                 db.commit()
             else:
                 print(f"{title} delete request has been cancelled.\n")
-            
         pass
 
     ### Option 4 - Search for a book by title and print its details.
     elif menu == '4':
-        
         title = input("Please enter the title of the book to be found: \n")
         books = []
         #execute function to search for a book.
         books_found = search_book(title)
         books = books_found[1]
         tot_qty = books_found[0]
-        
         #Check if any books found and print list if found.
         if tot_qty > 0:
             print(f"Book {title}, found, printing details: \n")
@@ -383,11 +370,9 @@ while end:
             
     ### Exit Menu.    
     elif menu == '0':
-    #Close database.        
-      db.close()
-      #exit the program.
-      print("Goodbye\n")
-      break
+        db.close()
+        print("Goodbye\n")
+        break
     else:
         print("Menu option incorrect, please try again.\n")
         pass

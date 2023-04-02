@@ -1,5 +1,5 @@
-# Capstone Project 1 - Level 2 task 13
-### Project to create a book store system using python and SQLite3 DB.
+# BOOKSTORE - Capstone Project 1:Level 2 task 13
+### Project to Create a Book Store System using Python and SQLite3 DB.
 ##### Table of Contents:
 ##### 1. Installation.
 ##### 2. System Usage.
